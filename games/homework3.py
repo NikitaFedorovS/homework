@@ -7,7 +7,7 @@ df_Type = data['Type'].value_counts()
 df_Origrin = data['Origrin'].value_counts()
 
 
-# check color_type_prigin
+# check color_type_origin
 def color_type_prigin(x):
     df_yes = pd.DataFrame(data[data['Stolen?'] == 'Yes'][x].value_counts())
     df_yes.rename(columns={x: 'Yes'}, inplace=True)
@@ -28,14 +28,11 @@ def color_type_prigin(x):
     df_frequency = df_yes1 + df_no1
     return df_frequency
 
-print(color_type_prigin('Color'))
-print()
-print(color_type_prigin('Type'))
-print()
-print(color_type_prigin('Origin'))
-print()
-print('----------')
-print()
+
+print(color_type_prigin('Color') + '\n')
+print(color_type_prigin('Type') + '\n')
+print(color_type_prigin('Origin') + '\n')
+print('----------\n')
 
 print(color_type_prigin('Color')['Yes']['Red']*color_type_prigin('Type')['Yes']['SUV']*color_type_prigin('Origin')['Yes']['Domestic'])
 print(color_type_prigin('Color')['No']['Red']*color_type_prigin('Type')['No']['SUV']*color_type_prigin('Origin')['No']['Domestic'])
